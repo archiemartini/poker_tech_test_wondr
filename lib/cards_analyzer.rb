@@ -1,28 +1,31 @@
 class CardsAnalyzer
   
   def analyze_cards(cards_object_array)
-    if flush?(cards_object_array) != false
-      flush?(cards_object_array)
-    elsif three_of_a_kind?(cards_object_array) != false
-      three_of_a_kind?(cards_object_array)
+    cards = cards_object_array
+    if flush?(cards) != false
+      flush?(cards)
+    elsif straight?(cards) != false
+      straight?(cards)
+    elsif three_of_a_kind?(cards) != false
+      three_of_a_kind?(cards)
     end
   end 
 
   private
 
-  def flush?(hand)
-    sorted_values = hand.map { |card|
+  def flush?(cards)
+    sorted_values = cards.map { |card|
       card.value
     }.sort
-    suits = hand.map { |card|
+    suits = cards.map { |card|
       card.suit
     }
     return suits.uniq.length == 1 ? {"rank": "Flush", "value": sorted_values.last, "strength": 6} : false
   end
 
 
-  def three_of_a_kind?(card_object_array)
-    sorted_values = card_object_array.map { |card|
+  def three_of_a_kind?(cards)
+    sorted_values = cards.map { |card|
       card.value
     }.sort
     sorted_values.each do |value|
@@ -30,6 +33,15 @@ class CardsAnalyzer
     end
     false
   end
+
+  def straight?(cards)
+    sorted_values = cards.map { |card|
+      card.value
+    }.sort
+    straight_boolean = sorted_values.each_cons(2).all? { |x,y| y == x + 1 } 
+    straight_boolean ? {'rank': 'Straight', 'value': sorted_values.last, 'strength': 5} : false
+  end
+
 
 
 end

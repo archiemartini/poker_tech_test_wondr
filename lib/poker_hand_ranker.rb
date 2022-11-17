@@ -1,5 +1,6 @@
-class PokerHandRanker
+# frozen_string_literal: true
 
+class PokerHandRanker
   attr_accessor :data, :hands, :ranked_hands
 
   def initialize(json_data:)
@@ -15,7 +16,7 @@ class PokerHandRanker
       hands.push(Hand.new(hand_data: hand_data))
     end
   end
-  
+
   def set_ranked_hands
     return unless @hands
 
@@ -33,5 +34,4 @@ class PokerHandRanker
       hand[:original_data]
     end
   end
-
 end

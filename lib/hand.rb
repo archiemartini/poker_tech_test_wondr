@@ -1,5 +1,6 @@
-class Hand
+# frozen_string_literal: true
 
+class Hand
   attr_accessor :data, :cards
 
   def initialize(hand_data:, cards_analyzer: nil)

@@ -64,6 +64,18 @@ RSpec.describe 'the PokerHandRanker class:' do
     end
   end
 
+  describe 'the set_ranked_hands method' do
+    let(:mock_analyzed_hand) { double(:mock_analyzed_hand, rank: 'Flush')}
+    
+    it 'the hand object from @hands returns a analyzed hand into the @ranked_hands array when generate_analysis is called upon it' do
+      ranker.hands = [
+        double(:mock_hand_object, generate_analysis: mock_analyzed_hand)
+      ]
+      ranker.set_ranked_hands
+      expect(ranker.ranked_hands).to include mock_analyzed_hand
+    end
+  end
+
   describe 'the extract_original_data method' do
     before do
       @expected = [

@@ -18,7 +18,7 @@ class PokerHandRanker
 
   def sort_ranked_hands_in_order
     @ranked_hands.sort! do |x, y|
-      y[:strength] <=> x[:strength]
+      y[:strength] == x[:strength] ? y[:value] <=> x[:value] : y[:strength] <=> x[:strength]
     end
   end
 

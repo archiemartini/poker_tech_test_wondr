@@ -20,8 +20,8 @@ class Hand
   def generate_cards
     return unless @cards.empty?
 
-    @data.each { |card_data|
+    @data.each do |card_data|
       @cards.push(Card.new(card_data))
-    }
+    end
   end
 end

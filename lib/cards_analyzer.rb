@@ -14,13 +14,9 @@ class CardsAnalyzer
   private
 
   def flush?(cards)
-    sorted_values = cards.map { |card|
-      card.value
-    }.sort
-    suits = cards.map { |card|
-      card.suit
-    }
-    return suits.uniq.length == 1 ? {"rank": "Flush", "value": sorted_values.last, "strength": 6} : false
+    sorted_values = cards.map(&:value).sort
+    suits = cards.map(&:suit)
+    suits.uniq.length == 1 ? {"rank": "Flush", "value": sorted_values.last, "strength": 6} : false
   end
 
 

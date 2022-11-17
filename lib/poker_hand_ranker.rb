@@ -1,17 +1,24 @@
 class PokerHandRanker
 
-  attr_accessor :data, :hands
+  attr_accessor :data, :hands, :ranked_hands
 
   def initialize(json_data:)
     @data = json_data
     @hands = []
+    @ranked_hands = []
   end
 
   def generate_hands
     return unless @hands.empty?
 
-    @data.map { |hand_data|
+    @data.map do |hand_data|
       hands.push(Hand.new(hand_data: hand_data))
-    }
+    end
+  end
+
+  def set_ranked_hands
+    return unless @hands
+
+    @ranked_hands = @hands.map(&:generate_analysis)
   end
 end

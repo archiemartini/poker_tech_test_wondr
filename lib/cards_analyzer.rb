@@ -1,12 +1,24 @@
 class CardsAnalyzer
   
   def analyze_cards(cards_object_array)
-    if three_of_a_kind?(cards_object_array) != false
+    if flush?(cards_object_array) != false
+      flush?(cards_object_array)
+    elsif three_of_a_kind?(cards_object_array) != false
       three_of_a_kind?(cards_object_array)
     end
   end 
 
   private
+
+  def flush?(hand)
+    sorted_values = hand.map { |card|
+      card.value
+    }.sort
+    suits = hand.map { |card|
+      card.suit
+    }
+    return suits.uniq.length == 1 ? {"rank": "Flush", "value": sorted_values.last, "strength": 6} : false
+  end
 
 
   def three_of_a_kind?(card_object_array)
@@ -18,4 +30,6 @@ class CardsAnalyzer
     end
     false
   end
+
+
 end

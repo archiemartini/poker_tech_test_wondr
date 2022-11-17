@@ -21,7 +21,7 @@ class Hand
     return unless @cards.empty?
 
     @data.each do |card_data|
-      @cards.push(Card.new(card_data))
+      @cards.push(Card.new(card_data_hash: card_data))
     end
   end
 end

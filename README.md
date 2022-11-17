@@ -62,7 +62,7 @@ File.write('./hands.json', JSON.generate(new_json_data, options))
 - `generate_hands` is called privately by the `get_analysis` method, to populate the `@cards` attribute
 
 ### `ChildClasses < Hand`
-- I was originally returning hashes (example `{:hand_rank=>"Three of a Kind", :rank_value=>5, :rank_strength=>4}`) containing the analysis information, however, this brought up some issues and required extra methods to insert `original_data` into these hashes.
+- I was originally returning hashes (example `{:rank=>"Three of a Kind", :value=>5, :strength=>4}`) containing the analysis information, however, this brought up some issues and required extra methods to insert `original_data` into these hashes.
 - Using the principle of inheritence I was able to cut down my lines and increase my readability.
 - `@rank` attribute is the given name of the Poker hand
 - `@strength` attribute is the strength of a hand where a Royal Flush is `10`, and a High card is `1`, e.g. a Three of a Kind is `4`

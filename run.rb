@@ -18,3 +18,8 @@ ranker.sort_ranked_hands_in_order
 
 puts "SORTED HANDS",ranker.ranked_hands, " "
 
+ranker.extract_original_data
+
+puts "ORIGINAL DATA", ranker.ranked_hands, " "
+
+

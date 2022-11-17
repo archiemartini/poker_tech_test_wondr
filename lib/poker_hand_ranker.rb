@@ -15,6 +15,12 @@ class PokerHandRanker
       hands.push(Hand.new(hand_data: hand_data))
     end
   end
+  
+  def set_ranked_hands
+    return unless @hands
+
+    @ranked_hands = @hands.map(&:generate_analysis)
+  end
 
   def sort_ranked_hands_in_order
     @ranked_hands.sort! do |x, y|
@@ -22,9 +28,10 @@ class PokerHandRanker
     end
   end
 
-  def set_ranked_hands
-    return unless @hands
-
-    @ranked_hands = @hands.map(&:generate_analysis)
+  def extract_original_data
+    @ranked_hands = @ranked_hands.map do |hand|
+      hand[:original_data]
+    end
   end
+
 end

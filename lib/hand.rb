@@ -12,10 +12,15 @@ class Hand
   def generate_analysis
     generate_cards
     @analysis = @analyzer.analyze_cards(@cards)
+    add_original_data
     @analysis
   end
 
   private
+
+  def add_original_data
+    @analysis[:original_data] = @cards.map(&:data)
+  end
 
   def generate_cards
     return unless @cards.empty?

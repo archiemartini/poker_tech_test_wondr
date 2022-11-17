@@ -60,4 +60,32 @@ RSpec.describe 'the PokerHandRanker class:' do
       expect(ranker.sort_ranked_hands_in_order).to eq @expected
     end
   end
+
+  describe 'the extract_original_data method' do
+    before do
+      ranker.ranked_hands = [
+        {:rank=>"Flush", :value=>11, :strength=>6, :original_data=> [
+            {"suit"=>"club", "value"=>1}, 
+            {"suit"=>"club", "value"=>3}, 
+            {"suit"=>"club", "value"=>8}, 
+            {"suit"=>"club", "value"=>9}, 
+            {"suit"=>"club", "value"=>11}
+          ]
+        }
+      ]
+      @expected = [
+          [
+          {"suit"=>"club", "value"=>1}, 
+          {"suit"=>"club", "value"=>3}, 
+          {"suit"=>"club", "value"=>8}, 
+          {"suit"=>"club", "value"=>9}, 
+          {"suit"=>"club", "value"=>11}
+        ]
+      ]
+    end
+    it "extracts the original data from anlysis object correctly" do
+      ranker.extract_original_data
+      expect(ranker.ranked_hands).to eq @expected
+    end
+  end
 end

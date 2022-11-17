@@ -11,8 +11,7 @@ class Hand
 
   def generate_analysis
     generate_cards
-    analysis = @analyzer.analyze_cards(@cards)
-    self
+    @analyzer.analyze_cards(@cards)
   end
 
   private

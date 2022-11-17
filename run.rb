@@ -10,9 +10,11 @@ hands_data = JSON.parse(json_from_file)
 ranker = PokerHandRanker.new(json_data: hands_data)
 ranker.generate_hands
 
+
 ranker.set_ranked_hands
+puts "UNSORTED HANDS", ranker.ranked_hands, " "
 
 ranker.sort_ranked_hands_in_order
 
-puts "RANKED HANDS",ranker.ranked_hands, " "
+puts "SORTED HANDS",ranker.ranked_hands, " "
 

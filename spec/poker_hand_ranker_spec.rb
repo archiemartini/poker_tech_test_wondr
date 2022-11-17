@@ -36,4 +36,29 @@ RSpec.describe 'the PokerHandRanker class:' do
     end
   end
 
+  describe 'the sort_ranked_hands_in_order' do
+
+    before do
+      ranker.ranked_hands = [
+        {:rank=>"Pair", :value=>2, :strength=>2},
+        {:rank=>"Three of a Kind", :value=>5, :strength=>4},
+        {:rank=>"Flush", :value=>11, :strength=>6},
+        {:rank=>"Three of a Kind", :value=>2, :strength=>4},
+        {:rank=>"Straight", :value=>5, :strength=>5},
+      ]
+
+      @expected = [
+        {:rank=>"Flush", :value=>11, :strength=>6},
+        {:rank=>"Straight", :value=>5, :strength=>5},
+        {:rank=>"Three of a Kind", :value=>5, :strength=>4},
+        {:rank=>"Three of a Kind", :value=>2, :strength=>4},
+        {:rank=>"Pair", :value=>2, :strength=>2}
+      ]
+    end
+
+    it "correctly orders example data" do      
+      expect(ranker.sort_ranked_hands_in_order).to eq @expected
+    end
+  end
+
 end

@@ -86,5 +86,6 @@ File.write('./hands.json', JSON.generate(new_json_data, options))
 - **Final JSON formatting** I was going for style points with that final `File.write` but I COULD NOT for the life of me get that exact formatting, indent was messing me up, got it close as though
 - **`attr_accessor` prevalence** It's my assumption that flagrant use of `attr_accessor`s in real life applications would leave the programme open to manipulation
 - **Mocking and Stubbing** Again, I really need to work on my mocking and stubbing skills in RSpec. I've been coding in predominately JavaScript/Node.js for the longest time.
+- **Linting** The only thing rubocop was raising issue with at the end was some of the block sizes featured in my test. Again down to sloppy mocking on my part.
 
 

@@ -30,8 +30,6 @@ class PokerHandRanker
   end
 
   def extract_original_data
-    @ranked_hands = @ranked_hands.map do |hand|
-      hand.data
-    end
+    @ranked_hands = @ranked_hands.map(&:data)
   end
 end

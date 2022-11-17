@@ -38,11 +38,11 @@ RSpec.describe 'the PokerHandRanker class:' do
   end
 
   describe 'the sort_ranked_hands_in_order' do
-    let(:mock_pair_object ) { double(:mock_pair_object, rank: 'Pair', strength: 2, value: 2) }
-    let(:mock_flush_object) { double(:mock_flush_object, rank: 'Flush', strength: 6, value: 11)}
-    let(:mock_set_object1) { double(:mock_set_object1, rank: 'Three of a Kind', strength: 4, value: 2)}
-    let(:mock_set_object2) { double(:mock_set_object2, rank: 'Three of a Kind',strength: 4, value: 5)}
-    
+    let(:mock_pair_object) { double(:mock_pair_object, rank: 'Pair', strength: 2, value: 2) }
+    let(:mock_flush_object) { double(:mock_flush_object, rank: 'Flush', strength: 6, value: 11) }
+    let(:mock_set_object1) { double(:mock_set_object1, rank: 'Three of a Kind', strength: 4, value: 2) }
+    let(:mock_set_object2) { double(:mock_set_object2, rank: 'Three of a Kind', strength: 4, value: 5) }
+
     before do
       ranker.ranked_hands = [
         mock_pair_object,
@@ -65,8 +65,8 @@ RSpec.describe 'the PokerHandRanker class:' do
   end
 
   describe 'the set_ranked_hands method' do
-    let(:mock_analyzed_hand) { double(:mock_analyzed_hand, rank: 'Flush')}
-    
+    let(:mock_analyzed_hand) { double(:mock_analyzed_hand, rank: 'Flush') }
+
     it 'the hand object from @hands returns a analyzed hand into the @ranked_hands array when generate_analysis is called upon it' do
       ranker.hands = [
         double(:mock_hand_object, generate_analysis: mock_analyzed_hand)
@@ -80,18 +80,18 @@ RSpec.describe 'the PokerHandRanker class:' do
     before do
       @expected = [
         [
-          {"suit"=>"club", "value"=>1}, 
-          {"suit"=>"club", "value"=>3}, 
-          {"suit"=>"club", "value"=>8}, 
-          {"suit"=>"club", "value"=>9}, 
-          {"suit"=>"club", "value"=>11}
+          { 'suit' => 'club', 'value' => 1 },
+          { 'suit' => 'club', 'value' => 3 },
+          { 'suit' => 'club', 'value' => 8 },
+          { 'suit' => 'club', 'value' => 9 },
+          { 'suit' => 'club', 'value' => 11 }
         ]
       ]
       ranker.ranked_hands = [
         double(:mock_hand_object, data: @expected[0])
       ]
     end
-    it "extracts the original data from anlysis object correctly" do
+    it 'extracts the original data from anlysis object correctly' do
       ranker.extract_original_data
       expect(ranker.ranked_hands).to eq @expected
     end

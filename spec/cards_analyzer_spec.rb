@@ -3,7 +3,6 @@
 require 'cards_analyzer'
 
 RSpec.describe 'the CardsAnalyzer class:' do
-  
   before do
     @example_card_data = {
       flush: [
@@ -36,7 +35,7 @@ RSpec.describe 'the CardsAnalyzer class:' do
       ]
     }
   end
-  
+
   describe 'the analyze_cards method' do
     describe 'the integration of private function three_of_a_kind?' do
       it 'conditional returns the appropriate hash when true' do

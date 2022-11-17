@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CardsAnalyzer
-
   def initialize(hand_data:)
     @data = hand_data
   end

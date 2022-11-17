@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Hand
-  attr_accessor :data, :cards, :strength, :rank,  :value
+  attr_accessor :data, :cards, :strength, :rank, :value
 
   def initialize(hand_data:, analyzer: nil)
     @data = hand_data

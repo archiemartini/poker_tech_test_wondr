@@ -1,6 +1,7 @@
 # Poker Tech Test
 
-Poker tech test for Wondr medical. Was glad to see this as I am a consummate, degenerate, gambler.
+Poker tech test for Wondr medical. Was glad to see this as I am a consummate, degenerate, gambler. Also what on earth is a [Five of a Kind? ](https://en.wikipedia.org/wiki/List_of_poker_han
+)
 
 ## My Approach
 

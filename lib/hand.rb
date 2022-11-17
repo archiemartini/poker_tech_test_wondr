@@ -24,10 +24,6 @@ class Hand
 
   private
 
-  def add_original_data
-    @analysis[:original_data] = @cards.map(&:data)
-  end
-
   def generate_cards
     return unless @cards.empty?
 

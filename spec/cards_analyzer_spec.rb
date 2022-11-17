@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'cards_analyzer'
 
 RSpec.describe 'the CardsAnalyzer class:' do

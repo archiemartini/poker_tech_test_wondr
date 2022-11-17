@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Class for sorting provided json_data comprising of array holding an array (hand) holding five hashes (cards)
 class PokerHandRanker
   attr_accessor :data, :hands, :ranked_hands

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'card'
 
 RSpec.describe 'the Card class:' do

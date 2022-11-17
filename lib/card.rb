@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Creates a Card object from the card_data passed down by Hand object's generate_cards method
 class Card
   attr_accessor :suit, :value, :data

@@ -26,6 +26,13 @@ RSpec.describe 'the CardsAnalyzer class:' do
         double(:mock_card, value: 3, suit: "club"),
         double(:mock_card, value: 4, suit: "diamond"),
         double(:mock_card, value: 5, suit: "spade"),  
+      ],
+      pair: [
+        double(:mock_card, value: 2, suit: "spade"),
+        double(:mock_card, value: 2, suit: "heart"),
+        double(:mock_card, value: 6, suit: "club"),
+        double(:mock_card, value: 4, suit: "diamond"),
+        double(:mock_card, value: 11, suit: "spade"),  
       ]
     }
   end
@@ -54,6 +61,15 @@ RSpec.describe 'the CardsAnalyzer class:' do
       it "conditional returns the appropriate hash when true" do
         straight = @example_card_data[:straight] 
         expect(analyzer.analyze_cards(straight)).to include(:rank => 'Straight', :strength => 5, :value => 5)
+      end
+
+    end
+  
+    describe 'the integration of private function pair?' do
+
+      it "conditional returns the appropriate hash when true" do
+        pair = @example_card_data[:pair] 
+        expect(analyzer.analyze_cards(pair)).to include(:rank => 'Pair', :strength => 2, :value => 2)
       end
 
     end

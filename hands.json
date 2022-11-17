@@ -1,5 +1,12 @@
 [
   [
+    {"suit": "club", "value": 2},
+    {"suit": "heart", "value": 2},
+    {"suit": "spade", "value": 7},
+    {"suit": "club", "value": 4},
+    {"suit": "diamond", "value": 1}
+  ],
+  [
     {"suit": "heart", "value": 5},
     {"suit": "heart", "value": 8},
     {"suit": "spade", "value": 1},

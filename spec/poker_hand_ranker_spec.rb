@@ -29,6 +29,11 @@ RSpec.describe 'the PokerHandRanker class:' do
       ranker.generate_hands
       expect(ranker.hands).to include(a_kind_of(Object))
     end
+
+    it "populates the @hands attribute array with 2 objects" do
+      ranker.generate_hands
+      expect(ranker.hands.length).to eq 2
+    end
   end
 
 end

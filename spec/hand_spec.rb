@@ -10,16 +10,24 @@ RSpec.describe "the Hand class" do
     {"suit": "club", "value": 5},
     {"suit": "diamond", "value": 5}
   ]
-  subject(:hand) { Hand.new(hand_data: example_hand) }  
+  let(:mock_analyzer) {double(:mock_analyzer, analyze_cards: {"rank": "Three of a Kind", 'strength': 4, "value": 5})}
+  subject(:hand) { Hand.new(hand_data: example_hand, cards_analyzer: mock_analyzer) }  
 
   it "holds the original data in initialization attribute" do
     expect(hand.data).to eq example_hand
   end
 
-  describe "the generate_cards method" do
+  describe 'the generate_analysis method' do
+
+    it "returns correct value" do
+      expect(hand.generate_analysis).to include(:rank => 'Three of a Kind', :strength => 4, :value => 5)
+    end
+  end
+
+  describe "the generate_cards private method's integration with generate_analysis method" do
 
     before do
-      hand.generate_cards
+      hand.generate_analysis
     end
 
     it "populates the @cards attribute array with card objects" do
@@ -31,7 +39,7 @@ RSpec.describe "the Hand class" do
     end
     
     it "does not populate if array is already populated" do
-      hand.generate_cards
+      hand.generate_analysis
       expect(hand.cards.length).to eq 5
     end
   end

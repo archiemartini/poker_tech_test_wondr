@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Analyses array of card objects passed down by Hand objects 'generate_analysis' method
 class CardsAnalyzer
   def initialize(hand_data:)
     @data = hand_data

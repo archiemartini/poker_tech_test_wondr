@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Creates a Hand object using data passed down from initialization within the HandRanker class
 class Hand
   attr_accessor :data, :cards, :strength, :rank, :value
 
@@ -25,6 +26,7 @@ class Hand
   end
 end
 
+# A child of the Hand class, initialized when a hand object's suit/values are evaluated to be a Flush
 class Flush < Hand
   attr_accessor :rank, :strength, :value
 
@@ -36,6 +38,7 @@ class Flush < Hand
   end
 end
 
+# A child of the Hand class, initialized when a hand object's suit/values are evaluated to be a Straight
 class Straight < Hand
   attr_accessor :rank, :strength, :value
 
@@ -47,6 +50,7 @@ class Straight < Hand
   end
 end
 
+# A child of the Hand class, initialized when a hand object's suit/values are evaluated to be a Three of a Kind
 class ThreeOfAKind < Hand
   attr_accessor :rank, :strength, :value
 
@@ -58,6 +62,7 @@ class ThreeOfAKind < Hand
   end
 end
 
+# A child of the Hand class, initialized when a hand object's suit/values are evaluated to be a Pair
 class Pair < Hand
   attr_accessor :rank, :strength, :value
 

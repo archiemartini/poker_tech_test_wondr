@@ -25,4 +25,10 @@ RSpec.describe 'the PokerHandRanker class:' do
     expect(@ranker.hands).to eq []
   end
 
+  describe 'the generate_hands method' do
+    it "populates the @hands attribute array after being called" do
+      expect(@ranker.generate_hands).to include(a_kind_of(Object))
+    end
+  end
+
 end

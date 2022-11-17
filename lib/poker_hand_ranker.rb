@@ -6,4 +6,12 @@ class PokerHandRanker
     @data = json_data
     @hands = []
   end
+
+  def generate_hands
+    return unless @hands.empty?
+    
+    @data.map { |hand_data|
+      hands.push(Hand.new(hand_data: hand_data))
+    }
+  end
 end

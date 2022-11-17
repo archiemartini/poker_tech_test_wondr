@@ -10,33 +10,9 @@ RSpec.describe 'the Hand class' do
     { "suit": 'club', "value": 5 },
     { "suit": 'diamond', "value": 5 }
   ]
-  let(:mock_analyzer) do
-    double(:mock_analyzer, analyze_cards: { "rank": 'Three of a Kind', 'strength': 4, "value": 5 })
-  end
-  subject(:hand) { Hand.new(hand_data: example_hand, cards_analyzer: mock_analyzer) }
-
-  it 'holds the original data in initialization attribute' do
-    expect(hand.data).to eq example_hand
-  end
-
-  describe 'the generate_analysis method' do
-
-    before do
-      hand.generate_analysis
-    end
-    it 'changes attribute to correct rank information' do
-      expect(hand.rank).to eq 'Three of a Kind'
-    end
-    
-    it 'changes attribute to correct strength information' do
-      expect(hand.strength).to eq 4
-    end
-
-    it 'changes attribute to correct rank information' do
-      expect(hand.value).to eq 5
-    end
-
-  end
+  let(:mock_three_of_object) { double(:mock_three_of_object, rank: 'Three of a Kind', strength: 4, value: 5) }
+  let(:mock_analyzer) { double(:mock_analyzer, analyze_cards: mock_three_of_object) }
+  subject(:hand) { Hand.new(hand_data: example_hand, analyzer: mock_analyzer) }
 
   describe "the generate_cards private method's integration with generate_analysis method" do
     before do

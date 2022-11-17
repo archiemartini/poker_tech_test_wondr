@@ -38,7 +38,7 @@ UML diagram for class interaction:
 https://miro.com/app/board/uXjVPDHJ3wo=/
 ![diagram](./UML-diagram.png)
 
-I discerned 4 classes that would comprise a programme that would solve this challenge.
+I initially discerned 4 classes that would comprise a programme that would solve this challenge. 4 child classes of Hand then followed.
 
 ## Structure
 

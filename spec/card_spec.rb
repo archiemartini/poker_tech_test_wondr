@@ -11,4 +11,12 @@ RSpec.describe 'the Card class:' do
     expect(@card.data).to include(:suit => 'heart', :value => 5)
   end
 
+  it "holds a suit string in attribute" do
+    expect(@card.suit).to eq('heart')
+  end
+
+  it "holds a value integer in attribute" do
+    expect(@card.value).to eq(5)
+  end
+
 end

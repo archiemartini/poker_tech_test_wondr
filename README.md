@@ -3,28 +3,28 @@
 ## Initial planning:
 
 ### Identifiable classes:
-- HandRanker
+- PokerHandRanker
 - Hand
 - Card
-- HandAnalyzer
+- CardsAnalyzer
 
-#### class HandRanker
-- def initialize(jsonData)
+#### class PokerHandRanker
+- def initialize(json_data)
 - def generate_hands()
 - def rank_data()
 - def get_rank_info()
 
 #### class Hand
-- def initialize(handData)
+- def initialize(hand_data)
 - def get_ranking()
 - def stringify_data()
 
 #### class Card
-- def initialize(cardData)
+- def initialize(card_data)
 - attr_accessor :suit, :value
 
-#### class HandAnalyzer
-- def initialize(handObject)
+#### class CardsAnalyzer
+- def initialize(cards_object_array)
 - def analyze_hand()
 - private:
 - three_of_kind?

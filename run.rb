@@ -12,5 +12,7 @@ ranker.generate_hands
 
 ranker.set_ranked_hands
 
+ranker.sort_ranked_hands_in_order
+
 puts "RANKED HANDS",ranker.ranked_hands, " "
 

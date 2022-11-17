@@ -56,7 +56,6 @@ File.write('./hands.json', JSON.generate(new_json_data, options))
 - `set_ranked_hands` maps through the `@data` array and calls the Hand Object's 'generate_analysis` method
 - `sort_ranked_hands_in_order` calls a sorting algorithm on the `@ranked-hands` array. I added a pair to the original JSON data as proof of the sorting algorithm sorting lower ranked hands below the two three of a kinds. Seriously, tho, check that sort algorithm.
 - `extract_original_data` maps through the `@ranked_hands` Object array and accesses the `@data` attribute within them. Returning the data back into the JSON format.
-- `print_new_data` puts' the `@ranked_hands` array in a readable format
 
 ### `class Hand`
 - `generate_analysis` returns reproduced version of the Hand object, under the appropriate child class

@@ -10,7 +10,8 @@ My approach was gradual and went off without too many issues. Thanks in part to 
 My first iteration had utilised key/value hashes in the passing of data from the hand analyzer all the way back up to the HandRanker class. However coming back from lunch I thought my approach lacked few clean OOP examples and unnecessary `add_original_data` methods to pass back errant data. I really wanted to complete the brief in its simplest terms and return the exact same data, only, reordered. So I discerned hashes to be far from Object Oriented. I set about passing the `:rank, :strength, :value` attributes and setting them into the `Hand` class. The Hand object itself started to look bloated with so many attributes.
 
 Consulting the OOP principles, I decided I should give implement Inheritence. I had some experience having done a well reviewed tech test of the [Gilded Rose Kata](https://github.com/archiemartini/Gilded-Rose-Kata). After a couple initial hitches, and all the tests going to pot, I extracted the child classes, `Flush, Straight, ThreeOfAKind and Pair` from the Hand class. This had a dominoe cleaning effect on the entire system:
-- Making these after thought `add_original_data` methods disappear, this data was now found within the new Child objects. The HandAnalyzer private functions shortened and now returned these Child functions themselves. 
+- Making these after thought `add_original_data` methods disappear, this data was now found within the new Child objects. 
+- The HandAnalyzer private functions shortened and now returned these Child functions themselves. 
 - The Hand class `initialize` was no longer bloated.
 - The hash returns of the analyzer class were replaced with proper, named Child objects of the Hand class.
 

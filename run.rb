@@ -22,4 +22,10 @@ ranker.extract_original_data
 
 puts "ORIGINAL DATA", ranker.ranked_hands, " "
 
+new_json_data = ranker.ranked_hands
+options = {
+  array_nl: "\n ",
+  indent: " "
+}
+File.write('./hands.json', JSON.generate(new_json_data, options))
 

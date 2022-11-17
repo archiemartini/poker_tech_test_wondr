@@ -1,20 +1,25 @@
 # frozen_string_literal: true
 
 class Hand
-  attr_accessor :data, :cards
+  attr_accessor :data, :cards, :strength, :rank,  :value
 
   def initialize(hand_data:, cards_analyzer: nil)
     @data = hand_data
     @analyzer = cards_analyzer || CardsAnalyzer.new
     @cards = []
-    @analysis = nil
+    @rank = nil
+    @strength = nil
+    @value = nil
+
   end
 
   def generate_analysis
     generate_cards
-    @analysis = @analyzer.analyze_cards(@cards)
-    add_original_data
-    @analysis
+    analysis = @analyzer.analyze_cards(@cards)
+    @rank = analysis[:rank]
+    @strength = analysis[:strength]
+    @value = analysis[:value]
+    self
   end
 
   private

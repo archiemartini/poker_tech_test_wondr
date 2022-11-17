@@ -25,13 +25,13 @@ class PokerHandRanker
 
   def sort_ranked_hands_in_order
     @ranked_hands.sort! do |x, y|
-      y[:strength] == x[:strength] ? y[:value] <=> x[:value] : y[:strength] <=> x[:strength]
+      y.strength == x.strength ? y.value <=> x.value : y.strength <=> x.strength
     end
   end
 
   def extract_original_data
     @ranked_hands = @ranked_hands.map do |hand|
-      hand[:original_data]
+      hand.data
     end
   end
 end

@@ -13,7 +13,7 @@ ranker = PokerHandRanker.new(json_data: hands_data)
 ranker.generate_hands
 
 ranker.set_ranked_hands
-puts 'UNSORTED HANDS', ranker.ranked_hands, ' '
+puts 'UNSORTED HANDS', ranker.ranked_hands.map(&:inspect), ' '
 
 ranker.sort_ranked_hands_in_order
 

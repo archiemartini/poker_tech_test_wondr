@@ -38,21 +38,24 @@ RSpec.describe 'the PokerHandRanker class:' do
   end
 
   describe 'the sort_ranked_hands_in_order' do
+    let(:mock_pair_object ) { double(:mock_pair_object, rank: 'Pair', strength: 2, value: 2) }
+    let(:mock_flush_object) { double(:mock_flush_object, rank: 'Flush', strength: 6, value: 11)}
+    let(:mock_set_object1) { double(:mock_set_object1, rank: 'Three of a Kind', strength: 4, value: 2)}
+    let(:mock_set_object2) { double(:mock_set_object2, rank: 'Three of a Kind',strength: 4, value: 5)}
+    
     before do
       ranker.ranked_hands = [
-        { rank: 'Pair', value: 2, strength: 2 },
-        { rank: 'Three of a Kind', value: 5, strength: 4 },
-        { rank: 'Flush', value: 11, strength: 6 },
-        { rank: 'Three of a Kind', value: 2, strength: 4 },
-        { rank: 'Straight', value: 5, strength: 5 }
+        mock_pair_object,
+        mock_flush_object,
+        mock_set_object1,
+        mock_set_object2
       ]
 
       @expected = [
-        { rank: 'Flush', value: 11, strength: 6 },
-        { rank: 'Straight', value: 5, strength: 5 },
-        { rank: 'Three of a Kind', value: 5, strength: 4 },
-        { rank: 'Three of a Kind', value: 2, strength: 4 },
-        { rank: 'Pair', value: 2, strength: 2 }
+        mock_flush_object,
+        mock_set_object2,
+        mock_set_object1,
+        mock_pair_object
       ]
     end
 
@@ -63,24 +66,17 @@ RSpec.describe 'the PokerHandRanker class:' do
 
   describe 'the extract_original_data method' do
     before do
-      ranker.ranked_hands = [
-        {:rank=>"Flush", :value=>11, :strength=>6, :original_data=> [
-            {"suit"=>"club", "value"=>1}, 
-            {"suit"=>"club", "value"=>3}, 
-            {"suit"=>"club", "value"=>8}, 
-            {"suit"=>"club", "value"=>9}, 
-            {"suit"=>"club", "value"=>11}
-          ]
-        }
-      ]
       @expected = [
-          [
+        [
           {"suit"=>"club", "value"=>1}, 
           {"suit"=>"club", "value"=>3}, 
           {"suit"=>"club", "value"=>8}, 
           {"suit"=>"club", "value"=>9}, 
           {"suit"=>"club", "value"=>11}
         ]
+      ]
+      ranker.ranked_hands = [
+        double(:mock_hand_object, data: @expected[0])
       ]
     end
     it "extracts the original data from anlysis object correctly" do

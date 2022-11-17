@@ -20,9 +20,22 @@ RSpec.describe 'the Hand class' do
   end
 
   describe 'the generate_analysis method' do
-    it 'returns correct value' do
-      expect(hand.generate_analysis).to include(rank: 'Three of a Kind', strength: 4, value: 5)
+
+    before do
+      hand.generate_analysis
     end
+    it 'changes attribute to correct rank information' do
+      expect(hand.rank).to eq 'Three of a Kind'
+    end
+    
+    it 'changes attribute to correct strength information' do
+      expect(hand.strength).to eq 4
+    end
+
+    it 'changes attribute to correct rank information' do
+      expect(hand.value).to eq 5
+    end
+
   end
 
   describe "the generate_cards private method's integration with generate_analysis method" do

@@ -31,4 +31,8 @@ class PokerHandRanker
   def extract_original_data
     @ranked_hands = @ranked_hands.map(&:data)
   end
+
+  def print_ranked_hands
+    puts @ranked_hands.map { |hand| puts hand, ' ' }
+  end
 end

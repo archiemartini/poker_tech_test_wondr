@@ -10,25 +10,21 @@ json_from_file = File.read('./hands.json')
 hands_data = JSON.parse(json_from_file)
 
 ranker = PokerHandRanker.new(json_data: hands_data)
+
 ranker.generate_hands
 
-puts 'INITIAL HANDS:', ' '
-ranker.hands.map { |hand| puts hand.inspect, ' ' }
-
+puts "ANALYZED DATA"
 ranker.set_ranked_hands
+ranker.print_ranked_hands
 
-puts 'UNSORTED HANDS', ' '
-ranker.ranked_hands.map { |hand| puts hand.inspect, ' ' }
-
+puts "SORTED DATA"
 ranker.sort_ranked_hands_in_order
-
-puts 'SORTED HANDS', ' '
-ranker.ranked_hands.map { |hand| puts hand, ' ' }
+ranker.print_ranked_hands
 
 ranker.extract_original_data
+puts "REORDERED ORIGINAL DATA"
+ranker.print_ranked_hands
 
-puts 'REORDERED ORIGINAL DATA'
-ranker.ranked_hands.map { |hand| puts hand, ' ' }
 
 new_json_data = ranker.ranked_hands
 options = {

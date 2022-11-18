@@ -15,7 +15,7 @@ Consulting the OOP principles, I decided I should give implement Inheritence. I 
 - The Hand class `initialize` was no longer bloated.
 - The hash returns of the analyzer class were replaced with proper, named Child objects of the Hand class.
 
-I believe the programme is as clean as I could get it. Test Coverage is at 99.46%. Do excuse the patchwork mocking, Its been 5 months since I did any proper OOP and mock-testing in Ruby.
+I believe the programme is as clean as I could get it. 
 
 Thanks for your consideration, I hope I get a chance to explain my thoughts further in an interview.
 -Archie

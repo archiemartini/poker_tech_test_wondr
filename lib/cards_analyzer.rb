@@ -2,13 +2,13 @@
 
 # Analyses array of card objects passed down by Hand objects 'generate_analysis' method
 class CardsAnalyzer
-  def initialize(hand_data:)
+  def initialize(hand_data:, children:)
     @data = hand_data
-    @children = [
-      FlushAnalyzer.new(hand_data: hand_data),
-      ThreeOfAKindAnalyzer.new(hand_data: hand_data),
-      PairAnalyzer.new(hand_data: hand_data),
-      StraightAnalyzer.new(hand_data: hand_data)
+    @children = children || [
+      FlushAnalyzer.new(hand_data: hand_data, children: true),
+      ThreeOfAKindAnalyzer.new(hand_data: hand_data, children: true),
+      PairAnalyzer.new(hand_data: hand_data, children: true),
+      StraightAnalyzer.new(hand_data: hand_data, children: true)
     ]
   end
 
@@ -21,8 +21,8 @@ class CardsAnalyzer
 end
 
 class FlushAnalyzer < CardsAnalyzer
-  def initialize(hand_data:)
-    super(hand_data: hand_data)
+  def initialize(hand_data:, children:)
+    super(hand_data: hand_data, children: children)
   end
 
   def analyze_cards(cards_object_array)
@@ -34,8 +34,8 @@ class FlushAnalyzer < CardsAnalyzer
 end
 
 class StraightAnalyzer < CardsAnalyzer
-  def initialize(hand_data:)
-    super(hand_data: hand_data)
+  def initialize(hand_data:, children:)
+    super(hand_data: hand_data, children: children)
   end
 
   def analyze_cards(cards_object_array)
@@ -47,8 +47,8 @@ class StraightAnalyzer < CardsAnalyzer
 end
 
 class ThreeOfAKindAnalyzer < CardsAnalyzer
-  def initialize(hand_data:)
-    super(hand_data: hand_data)
+  def initialize(hand_data:, children:)
+    super(hand_data: hand_data, children: children)
   end
 
   def analyze_cards(cards_object_array)
@@ -62,8 +62,8 @@ class ThreeOfAKindAnalyzer < CardsAnalyzer
 end
 
 class PairAnalyzer < CardsAnalyzer
-  def initialize(hand_data:)
-    super(hand_data: hand_data)
+  def initialize(hand_data:, children:)
+    super(hand_data: hand_data, children: children)
   end
 
   def analyze_cards(cards_object_array)

@@ -6,7 +6,7 @@ class Hand
 
   def initialize(hand_data:, analyzer: nil)
     @data = hand_data
-    @analyzer = analyzer || CardsAnalyzer.new(hand_data: hand_data)
+    @analyzer = analyzer || CardsAnalyzer.new(hand_data: hand_data, children: false)
     @cards = []
   end
 

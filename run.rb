@@ -13,18 +13,17 @@ ranker = PokerHandRanker.new(json_data: hands_data)
 
 ranker.generate_hands
 
-puts "ANALYZED DATA"
+puts 'ANALYZED DATA'
 ranker.set_ranked_hands
 ranker.print_ranked_hands
 
-puts "SORTED DATA"
+puts 'SORTED DATA'
 ranker.sort_ranked_hands_in_order
 ranker.print_ranked_hands
 
 ranker.extract_original_data
-puts "REORDERED ORIGINAL DATA"
+puts 'REORDERED ORIGINAL DATA'
 ranker.print_ranked_hands
-
 
 new_json_data = ranker.ranked_hands
 options = {

@@ -1,45 +1,73 @@
+# frozen_string_literal: true
+
 # Analyses array of card objects passed down by Hand objects 'generate_analysis' method
 class CardsAnalyzer
   def initialize(hand_data:)
     @data = hand_data
+    @children = [
+      FlushAnalyzer.new(hand_data: hand_data),
+      ThreeOfAKindAnalyzer.new(hand_data: hand_data),
+      PairAnalyzer.new(hand_data: hand_data),
+      StraightAnalyzer.new(hand_data: hand_data)
+    ]
   end
 
   def analyze_cards(cards_object_array)
     cards = cards_object_array
-    if flush?(cards) != false
-      flush?(cards)
-    elsif straight?(cards) != false
-      straight?(cards)
-    elsif three_of_a_kind?(cards) != false
-      three_of_a_kind?(cards)
-    elsif pair?(cards) != false
-      pair?(cards)
+    @children.each do |analyzer|
+      return analyzer.analyze_cards(cards) if analyzer.analyze_cards(cards) != false
     end
   end
+end
 
-  private
+class FlushAnalyzer < CardsAnalyzer
+  def initialize(hand_data:)
+    super(hand_data: hand_data)
+  end
 
-  def flush?(cards)
+  def analyze_cards(cards_object_array)
+    cards = cards_object_array
     suits = cards.map(&:suit)
     sorted_values = cards.map(&:value).sort
     suits.uniq.length == 1 ? Flush.new(hand_data: @data, analyzer: nil, value: sorted_values.last) : false
   end
+end
 
-  def three_of_a_kind?(cards)
+class StraightAnalyzer < CardsAnalyzer
+  def initialize(hand_data:)
+    super(hand_data: hand_data)
+  end
+
+  def analyze_cards(cards_object_array)
+    cards = cards_object_array
+    sorted_values = cards.map(&:value).sort
+    straight_boolean = sorted_values.each_cons(2).all? { |x, y| y == x + 1 }
+    straight_boolean ? Straight.new(hand_data: @data, analyzer: nil, value: sorted_values.last) : false
+  end
+end
+
+class ThreeOfAKindAnalyzer < CardsAnalyzer
+  def initialize(hand_data:)
+    super(hand_data: hand_data)
+  end
+
+  def analyze_cards(cards_object_array)
+    cards = cards_object_array
     sorted_values = cards.map(&:value).sort
     sorted_values.each do |value|
       return ThreeOfAKind.new(hand_data: @data, analyzer: nil, value: value) if sorted_values.count(value) == 3
     end
     false
   end
+end
 
-  def straight?(cards)
-    sorted_values = cards.map(&:value).sort
-    straight_boolean = sorted_values.each_cons(2).all? { |x, y| y == x + 1 }
-    straight_boolean ? Straight.new(hand_data: @data, analyzer: nil, value: sorted_values.last) : false
+class PairAnalyzer < CardsAnalyzer
+  def initialize(hand_data:)
+    super(hand_data: hand_data)
   end
 
-  def pair?(cards)
+  def analyze_cards(cards_object_array)
+    cards = cards_object_array
     values = cards.map(&:value)
     values.each do |value|
       return Pair.new(hand_data: @data, analyzer: nil, value: value) if values.count(value) == 2

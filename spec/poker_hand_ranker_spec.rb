@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'poker_hand_ranker'
 
 RSpec.describe 'the PokerHandRanker class:' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Creates a Hand object using data passed down from initialization within the HandRanker class
 class Hand
   attr_accessor :data, :cards, :strength, :rank, :value
